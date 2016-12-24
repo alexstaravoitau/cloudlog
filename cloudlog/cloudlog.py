@@ -27,7 +27,7 @@ class CloudLog(object):
         telegram_chat_id    :
                               Telegram chat ID.
         """
-        self.telegram_chat_id = int(telegram_chat_id)
+        self.telegram_chat_id = int(telegram_chat_id) if telegram_chat_id is not None else None
         self.cloud_log_writer = dropbox.Dropbox(dropbox_token) if dropbox_token is not None else None
         self.notification_bot = TelegramBot(telegram_token) if telegram_token is not None else None
 
@@ -138,7 +138,7 @@ class CloudLog(object):
         mode    :
                   Message parsing mode. Defaults to `Markdown`.
         """
-        if self.notification_bot is None: return
+        if self.notification_bot is None or self.telegram_chat_id is None: return
 
         try:
             self.notification_bot.send_message(
@@ -161,7 +161,7 @@ class CloudLog(object):
         caption   :
                     Optional plot caption.
         """
-        if self.notification_bot is None: return
+        if self.notification_bot is None or self.telegram_chat_id is None: return
 
         plot_path = os.path.join(self.root, filename)
         with open(plot_path, 'rb') as file:
@@ -181,7 +181,7 @@ class CloudLog(object):
         Sends current log file to default Telegram chat. Does not notify the user about this message, send a separate
         message if you want the notification to hit user's device.
         """
-        if self.notification_bot is None: return
+        if self.notification_bot is None or self.telegram_chat_id is None: return
 
         with open(os.path.join(self.root, self.log_file), 'rb') as file:
             try:
