@@ -72,5 +72,5 @@ log.sync(notify=True, message='I\'m pregnant.')
 Specify the same flag for plots and add an optional caption message:
 ```
 ...
-log.add_plot(notify=True, caption='A pie chart of chances you\'re the father.')
+log.add_plot(notify=True, caption='Pie chart of chances you\'re the father.')
 ```
