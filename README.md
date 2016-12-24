@@ -2,10 +2,17 @@
 A simple logger that duplicates console logs to a file, Dropbox and Telegram.
 
 ## How to use
-Import `CloudLog` class:
-```
-from cloudlog import CloudLog
-```
+
+* Install package: 
+  
+  ```
+  pip install cloudlog
+  ```
+* Import `CloudLog` class:
+
+  ```
+  from cloudlog import CloudLog
+  ```
 
 You can log text by simply calling a `CloudLog` instance:
 ```python
