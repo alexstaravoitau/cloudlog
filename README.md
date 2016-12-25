@@ -1,5 +1,5 @@
 # cloudlog
-A simple logger that duplicates console logs to a local file, Dropbox and Telegram.
+A simple logger that duplicates console logs to a local file, Dropbox and Telegram. More details [in this post](http://navoshta.com/cloud-log/).
 
 ## How to use
 
@@ -19,7 +19,7 @@ A simple logger that duplicates console logs to a local file, Dropbox and Telegr
 
 	```python
 	log = CloudLog(root_path='~/logs'))
-	log('Some important stuff happening.')
+()	log('Some important stuff happening.')
 	log('And again!')
 	log('Luckily, it\'s all safe now in a local file.')
 	```
