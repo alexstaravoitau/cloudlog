@@ -1,11 +1,11 @@
 # cloudlog
-A simple logger that duplicates console logs to a file, Dropbox and Telegram.
+A simple logger that duplicates console logs to a local file, Dropbox and Telegram.
 
 ## How to use
 
 * Install package: 
   
-	```python
+	```bash
 	pip install cloudlog
 	```
 
@@ -21,7 +21,7 @@ A simple logger that duplicates console logs to a file, Dropbox and Telegram.
 	log = CloudLog(root_path='~/logs'))
 	log('Some important stuff happening.')
 	log('And again!')
-	log('Luckily, it\'s all safe now.')
+	log('Luckily, it\'s all safe now in a local file.')
 	```
 
 * Add `pyplot` plots as images in the same folder:
@@ -66,17 +66,19 @@ You may as well get notifications in a Telegram chat, with logs and plots being 
 * Provide both values in the initialiser.
 
 ```python
-log = CloudLog(root_path='~/logs', dropbox_token='YOUR_DROPBOX_TOKEN', telegram_token='YOUR_TELEGRAM_TOKEN', telegram_chat_id='CHAT_ID')
+log = CloudLog(root_path='~/logs', telegram_token='YOUR_TELEGRAM_TOKEN', telegram_chat_id='CHAT_ID')
 
 log('Some important stuff once more.')
-log('Luckily, it\'s all safe now. In the cloud! AND you\'re notified — how cool is that?')
+log('Luckily, it\'s all safe now in a local file. AND you\'re notified — how cool is that?')
 
 log.sync(notify=True, message='I\'m pregnant.')
 ```
 
-Specify the same flag for plots and add an optional caption message:
+Specify the same `notify` flag for plots for them to be sent to a Telegram chat as well:
 
 ```python
 ...
-log.add_plot(notify=True, caption='Pie chart of chances you\'re the father.')
+log.add_plot(notify=True)
 ```
+
+Since one may be tempted to dispatch a bunch of updates at the same time, the user will not be notified about messages containing files, such as plots and logs — only about the `message` passed to `sync()` method.
