@@ -5,44 +5,42 @@ A simple logger that duplicates console logs to a file, Dropbox and Telegram.
 
 * Install package: 
   
-  ```
-  pip install cloudlog
-  ```
+	```
+	pip install cloudlog
+	```
+	
 * Import `CloudLog` class:
 
-  ```
-  from cloudlog import CloudLog
-  ```
+	```
+	from cloudlog import CloudLog
+	```
 
-You can log text by simply calling a `CloudLog` instance:
-```python
-import os
+* Log text by simply calling a `CloudLog` instance:
 
-log = CloudLog(os.path.join(os.getcwd(), 'logs'))
+	```python
+	log = CloudLog(root_path='~/logs'))
+	log('Some important stuff happening.')
+	log('And again!')
+	log('Luckily, it\'s all safe now.')
+	```
 
-log('Some important stuff happening.')
-log('And again!')
-log('Luckily, it\'s all safe now.')
-```
+* Add `pyplot` plots as images in the same folder:
 
-You may as well add `pyplot` plots as images in the same folder:
-```
-from matplotlib import pyplot
+	```
+	from matplotlib import pyplot
 
-log = CloudLog(os.path.join(os.getcwd(), 'logs'))
+	# Draw a plot
+	x = range(42)
+	pyplot.plot(x, x)
+	pyplot.xlabel('Amount of logs')
+	pyplot.ylabel('Coolness of your app')
+	pyplot.grid(True)
 
-x = range(42)
-pyplot.plot(x, x)
+	# Call it before calling `pyplot.show()`.
+	log.add_plot()
 
-pyplot.xlabel('Amount of logs')
-pyplot.ylabel('Coolness of your app')
-pyplot.grid(True)
-
-# Call it before calling `pyplot.show()`.
-log.add_plot()
-
-pyplot.show()
-```
+	pyplot.show()
+	```
 
 ## Dropbox
 In order to sync your logs and plots to Dropbox: 
