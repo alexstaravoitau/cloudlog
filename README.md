@@ -18,8 +18,8 @@ A simple logger that duplicates console logs to a local file, Dropbox and Telegr
 * Log text by simply calling a `CloudLog` instance:
 
 	```python
-	log = CloudLog(root_path='~/logs'))
-()	log('Some important stuff happening.')
+	log = CloudLog(root_path='~/logs')
+	log('Some important stuff happening.')
 	log('And again!')
 	log('Luckily, it\'s all safe now in a local file.')
 	```
